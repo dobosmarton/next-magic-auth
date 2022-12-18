@@ -1,10 +1,9 @@
-import './globals.css'
+// import '../styles/dist.css';
+import { UserProvider } from '#/context/UserContext';
+import { Header } from '#/ui/Header';
+import '../styles/globals.css';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       {/*
@@ -12,7 +11,12 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>{children}</body>
+      <body>
+        <UserProvider>
+          <Header />
+          {children}
+        </UserProvider>
+      </body>
     </html>
-  )
+  );
 }
